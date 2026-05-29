@@ -1,0 +1,18 @@
+workflows:
+  android-release:
+    name: Android Build
+
+    environment:
+      flutter: 3.22.3
+      java: 17
+
+    scripts:
+      - flutter clean
+      - flutter pub get
+      - flutter build apk --debug --no-shrink || true
+      - pwd
+      - ls
+      - find . -name "*.apk" || true
+
+    artifacts:
+      - "**/*.apk"
